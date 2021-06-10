@@ -1,0 +1,8 @@
+<div class="furniture-page">  
+  <h1 class="form-title">Редактирование мебели</h1>
+
+  <%= render 'form', furniture: @furniture %>
+
+  <%= link_to 'Показать', @furniture %> |
+  <%= link_to 'Назад', furnitures_path, class: "btn btn-furniture" %>
+</div>

@@ -1,0 +1,26 @@
+%div
+  = image_tag 'mebel.jpeg', class: "banner"
+  .title-back
+    %h1.title Мебель — наша работа!
+    %h5.subtitle
+      Мебель - непременный атрибут комфортной и счастливой жизни.
+      Если Вы цените своё время и деньги, отдаете предпочтение ведущим производителям в белорусской  мебельной индустрии, тогда Ваша мебель оказалась к Вам совсем рядом.
+      Интернет магазин "Мебельблизко" создан для того, чтобы быть ближе к Вам, вашему вкусу и кошельку, чтобы радовать всегда доброжелательным отношением,
+      порядочностью и беспрекословным исполнением всех обязательств.
+.second-block
+  %ul.furniture-list
+    - @furnitures.each do |furniture|
+      %li.furniture-title
+        .card.mb-3
+          .row.g-0
+            - if furniture.image.attached?
+              = image_tag furniture.image, class: "furniture-image"
+            - else
+              = image_tag 'no_photo.png', class: "furniture-image"
+          .row.g-0
+            .card-body
+              %h5.card-title= furniture.name
+              %p.card-title
+                Цена: #{furniture.price}
+              = button_to "Подробнее", furniture_path(furniture), method: :get, class: "btn btn-furniture"
+              = button_to "Корзина", basket_show_url, method: :get, class: "btn btn-furniture"

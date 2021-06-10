@@ -1,0 +1,18 @@
+<div class="furniture-page">
+  <div class="show-page">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <strong>Имя:</strong>
+      <%= @manufacturer.name %>
+    </p>
+
+    <p>
+      <strong>Адрес:</strong>
+      <%= @manufacturer.address %>
+    </p>
+
+    <%= link_to 'Редактировать', edit_manufacturer_path(@manufacturer), class: "btn btn-furniture" %>
+    <%= link_to 'Назад', manufacturers_path, class: "btn btn-furniture" %>
+  </div>
+</div>

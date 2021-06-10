@@ -1,0 +1,133 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+a,
+.nav-link,
+a.nav-link {
+  color: white;
+  font-weight: bold;
+  background-color: none;
+}
+
+.table {
+  margin-top: 100px;
+}
+
+.table th {
+  color: #9c6644;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  background-color: rgba($color: #ced4da, $alpha: 0.5);
+  width: 100%;
+  padding: 0 !important;
+}
+
+a:hover,
+.nav-link:hover,
+a.nav-link:hover {
+  color: white;
+  background-color: #9c6644;
+}
+.navbar-brand:hover {
+  background-color: transparent !important;
+}
+
+a.link {
+  text-decoration: none;
+  color: black;
+  background-color: none;
+}
+
+a.link:hover {
+  text-decoration: none;
+  color: white;
+  background-color: none;
+}
+
+form {
+  position: relative;
+  width: 55%;
+  margin: auto;
+}
+
+.alert-danger {
+  z-index: 102;
+}
+
+.form-title {
+  position: relative;
+  width: 25%;
+  margin-bottom: 20px !important;
+  margin: auto;
+  color: #9c6644;
+}
+
+.form-control {
+  margin: 10px 10px 10px 0px;
+  width: 250px;
+}
+
+.form-label, label {
+  color: #9c6644;
+}
+
+.btn-danger {
+  position: relative;
+  margin: 0px;
+}
+
+a.btn.btn-danger {
+  color: white;
+}
+
+a.btn.btn-primary {
+  color: white;
+  background-color: #9c6644 !important;
+}
+
+.btn-primary, .btn-furniture {
+  background-color: #9c6644 !important;
+  border: none !important;
+}
+
+td {
+  font-size: 20px;
+}
+
+.footer {
+  padding-left: 200px;
+  padding-top: 20px;
+  height: 25vh;
+  width: 100%;
+  background-color: black;
+}
+
+.footer h3 {
+  color: #9c6644;
+  margin: 0;
+}
+
+.footer a, span {
+  color: white;
+  margin: 0;
+}

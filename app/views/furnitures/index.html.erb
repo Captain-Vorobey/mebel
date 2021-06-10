@@ -1,0 +1,43 @@
+<div class="furniture-page">
+  <p id="notice"><%= notice %></p>
+  <%if current_user %>
+    <% if current_user.has_role? :admin%>
+      <%= link_to 'Создать мебель', new_furniture_path, class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+
+  <%= form_tag furnitures_path, method: :get do %>
+    <h4 class="title">Поиск</h4>
+    <%= text_field_tag :search, params[:search], class: 'form-control' %>
+    <%= submit_tag "Найти", class: "btn btn-success" %>
+  <% end %>
+
+  <ul class="furniture-list">
+    <% @search_results.each do |furniture| %>
+      <li class="furniture-title">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <% if furniture.image.attached? %>
+              <%= image_tag furniture.image, class: "furniture-image" %>
+            <% else %>
+              <%= image_tag 'no_photo.png', class: "furniture-image" %>
+            <% end %>
+          </div>
+          <div class="row g-0">
+            <div class="card-body">
+              <h5 class="card-title"><%=furniture.name%></h5>
+              <p class="card-title">Цена: <%=furniture.price%></p>
+              <%= button_to "Подробнее", furniture_path(furniture), method: :get, class: "btn btn-furniture" %>
+              <%if current_user %>
+                <% if current_user.has_role? :admin%>
+                  <%= link_to 'Удалить', furniture, class: "btn btn-danger", method: :delete, data: { confirm: 'Вы уверены?' } %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+

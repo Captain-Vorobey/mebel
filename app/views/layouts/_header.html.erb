@@ -1,0 +1,36 @@
+<div class="navbar justify-content-center">
+  <a class="navbar-brand" href="<%= root_path %>">
+    <%= image_tag "furniture.png", alt:"logo", height: "100px", width: "100px" %>
+  </a>
+  <div class="nav-item">
+    <%= link_to 'Главная', root_path, class: 'nav-link' %>
+  </div>
+  <div class="nav-item">
+    <%= link_to 'Корзина', basket_show_url, class: 'nav-link' %>
+  </div>
+  <div class="nav-item">
+    <%= link_to 'Мебель', furnitures_path, class: 'nav-link' %>
+  </div>
+  <div class="nav-item">
+    <%= link_to 'Заказы', orders_path, class: 'nav-link' %>
+  </div>
+  <% if current_user %>
+    <% if current_user.has_role? :admin  %>
+      <div class="nav-item">
+        <%= link_to 'Категории', categories_path, class: 'nav-link' %>
+      </div>
+      <div class="nav-item">
+        <%= link_to 'Производители', manufacturers_path, class: 'nav-link' %>
+      </div>
+    <% end %>
+  <%end%>
+  <% if current_user  %>
+    <div class="nav-item">
+      <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+    </div>
+  <% else %>
+    <div class="nav-item">
+      <%= link_to 'Войти', user_session_path, class: 'nav-link' %>
+    </div>
+  <% end %>
+</div>

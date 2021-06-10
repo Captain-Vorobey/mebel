@@ -1,0 +1,74 @@
+<%= form_with(model: furniture, local: true) do |form| %>
+  <% if furniture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(furniture.errors.count, "error") %>Эта мебель будет сохранена:</h2>
+      <ul>
+        <% furniture.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :name, "Имя", :class => "form-label" %>
+        <%= form.text_field :name, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="field">
+        <%= form.label :description, "Описание", :class => "form-label" %>
+        <%= form.text_area :description, :class => "form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :price, "Цена", :class => "form-label" %>
+        <%= form.number_field :price, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="field">
+      <%= form.label :width, "Ширина", :class => "form-label" %>
+      <%= form.number_field :width, :class => "form-control" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :height, "Высота", :class => "form-label" %>
+        <%= form.number_field :height, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="field">
+        <%= form.label :manufacturer_id, "ID Производителя", :class => "form-label" %>
+        <%= form.select :manufacturer_id, Manufacturer.all.map {|el| [el.name, el.id]}, {}, { class: "form-select" } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="field">
+        <%= form.label :category_id, "ID Категории", :class => "form-label" %>
+        <%= form.select :category_id, Category.all.map {|el| [el.name, el.id]}, {}, { class: "form-select" } %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="field">
+        <%= form.label :image, "Фотография", :class => "form-label" %>
+        <%= form.file_field :image, required: false, autofocus: true, :class => "form-control"%>
+      </div>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit "Создать", :class =>  "btn btn-success" %>
+  </div>
+<% end %>

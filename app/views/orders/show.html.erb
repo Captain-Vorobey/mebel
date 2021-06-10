@@ -1,0 +1,69 @@
+<div class="furniture-page">
+  <p id="notice"><%= notice %></p>
+
+   <div class="card-show mb-3">
+    <div class="row g-0">
+      <div class="col-md-5">
+        <% if @furniture.image.attached? %>
+          <%= image_tag @furniture.image, class: "image-show" %>
+        <% else %>
+          <%= image_tag 'no_photo.png', class: "furniture-image" %>
+        <% end %>
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          <p class="card-title">
+            <strong>Имя:</strong>
+            <%= @furniture.name %>
+          </p>
+          <p>
+            <strong>ID Пользователя:</strong>
+            <%= @order.user_id %>
+          </p>
+          <p class="card-text">
+            <strong>Описание:</strong>
+            <%= @furniture.description %>
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>ID:</strong>
+            <%= @furniture.id %>
+          </li>
+          <li class="list-group-item">
+            <strong>Цена:</strong>
+            <%= @furniture.price %>
+          </li>
+          <li class="list-group-item">
+            <strong>Ширина:</strong>
+            <%= @furniture.width %>
+          </li>
+          <li class="list-group-item">
+            <strong>Высота:</strong>
+            <%= @furniture.height %>
+          </li>
+          <li class="list-group-item">
+            <strong>Производитель:</strong>
+            <%= Manufacturer.find(@furniture.manufacturer_id).name %>
+          </li>
+          <li class="list-group-item">
+            <strong>Категория:</strong>
+            <%= Category.find(@furniture.category_id).name %>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="control">
+    <%= link_to 'Редактировать', edit_order_path(@order), class: "btn btn-primary" %>
+  
+    <%if current_user %>
+      <% if current_user.has_role? :admin %>
+        <%= link_to 'Назад', orders_path, class: "btn btn-primary" %>
+      <%end%>
+      <% if current_user.has_role? :user %>
+        <%= link_to 'На главную', root_path, class: "btn btn-primary" %>
+      <%end%>
+    <%end%>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+%div
+  = image_tag 'mebel.jpeg', class: "banner"
+  .second-block
+    %br
+    %h1.text-center="Корзина"
+    %ul.furniture-list
+      - @furnitures.each do |furniture|
+        %li.furniture-title
+          .card.mb-3
+            .row.g-0
+              - if furniture.image.attached?
+                = image_tag furniture.image, class: "furniture-image"
+              - else
+                = image_tag 'no_photo.png', class: "furniture-image"
+            .row.g-0
+              .card-body
+                %h5.card-title= furniture.name
+                %p.card-title
+                  Цена: #{furniture.price}
+                = button_to "Подробнее", furniture_path(furniture), method: :get, class: "btn btn-furniture"
+    %h1.text-center="Сделать заказ"

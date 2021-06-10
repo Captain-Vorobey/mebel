@@ -1,0 +1,13 @@
+<div class="furniture-page">
+  <div class="show-page">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <strong>Имя:</strong>
+      <%= @category.name %>
+    </p>
+
+    <%= link_to 'Редактировать', edit_category_path(@category), class: "btn btn-furniture" %>
+    <%= link_to 'Назад', categories_path, class: "btn btn-furniture" %>
+  </div>
+</div>
